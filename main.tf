@@ -1,10 +1,4 @@
 
-# variables:
-#   tailscale_tags  list(string)
-#   tailscale_key_expiry  numer 3600
-#   machine_type    string        n1-standard-1
-#
-
 # Generate Tailscale auth key
 resource "tailscale_tailnet_key" "self" {
   reusable      = true
@@ -17,13 +11,10 @@ resource "tailscale_tailnet_key" "self" {
 #
 # [ Tailscale Server ]
 #
-#tfsec:ignore:google-compute-enable-shielded-vm-vtpm
-#tfsec:ignore:google-compute-enable-shielded-vm-im
 #tfsec:ignore:google-compute-vm-disk-encryption-customer-key
 resource "google_compute_instance" "tailscale" {
-  #checkov:skip=CKV_GCP_38
-  #checkov:skip=CKV_GCP_30:"Ensure that instances are not configured to use the default service account"
-  #checkov:skip=CKV_GCP_39:"Ensure Compute instances are launched with Shielded VM enabled"
+  #checkov:skip=CKV_GCP_30:Ensure that instances are not configured to use the default service account
+  #checkov:skip=CKV_GCP_38:Ensure boot disks for instances use Customer-Supplied Encryption Keys
 
   allow_stopping_for_update = true
   description               = var.instance_description
@@ -32,6 +23,12 @@ resource "google_compute_instance" "tailscale" {
   name                      = var.name
   tags                      = var.instance_tags
   zone                      = var.zone
+  shielded_instance_config {
+    # Image must support
+    enable_integrity_monitoring = true
+    enable_secure_boot          = true
+    enable_vtpm                 = true
+  }
 
   boot_disk {
     initialize_params {
@@ -59,6 +56,7 @@ resource "google_compute_instance" "tailscale" {
     network    = var.vpc_network_name
     subnetwork = var.vpc_subnetwork_name
   }
+  #service_account {}
 
   # Why??
   provisioner "local-exec" {

@@ -76,7 +76,7 @@ variable "zone" {
 #  type = string
 #}
 variable "tailscale_key_expiry" {
-  description = "Expiration of Tailscale authentication key in sec?"
+  description = "Expiration of Tailscale authentication key in seconds"
   type        = number
   default     = 3600
 }

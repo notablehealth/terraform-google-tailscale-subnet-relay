@@ -8,7 +8,8 @@ Terraform module to manage a Tailscale subnet relay instance on GCP
 
 ## Features
 
--
+- generates auth key for device login
+- manages a GCP instance runnng tailscale
 
 ## Usage
 
@@ -22,6 +23,11 @@ module "tailscale-subnet-relay" {
 
 }
 ```
+
+### Set Tailscale authorization via environment variables
+
+- TAILSCALE_API_KEY
+- TAILSCALE_TAILNET
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -61,7 +67,7 @@ No modules.
 | <a name="input_machine_type"></a> [machine\_type](#input\_machine\_type) | GCP instance machine type | `string` | `"n1-standard-1"` | no |
 | <a name="input_name"></a> [name](#input\_name) | GCP instance name | `string` | `"tailscale"` | no |
 | <a name="input_subnetwork_cidr_ip_blocks"></a> [subnetwork\_cidr\_ip\_blocks](#input\_subnetwork\_cidr\_ip\_blocks) | List of subnet cidrs to route (, separated) | `string` | `""` | no |
-| <a name="input_tailscale_key_expiry"></a> [tailscale\_key\_expiry](#input\_tailscale\_key\_expiry) | Expiration of Tailscale authentication key in sec? | `number` | `3600` | no |
+| <a name="input_tailscale_key_expiry"></a> [tailscale\_key\_expiry](#input\_tailscale\_key\_expiry) | Expiration of Tailscale authentication key in seconds | `number` | `3600` | no |
 | <a name="input_tailscale_repo_key"></a> [tailscale\_repo\_key](#input\_tailscale\_repo\_key) | Tailscale package repository GPG key | `string` | `"https://pkgs.tailscale.com/stable/ubuntu/jammy.noarmor.gpg "` | no |
 | <a name="input_tailscale_repo_list"></a> [tailscale\_repo\_list](#input\_tailscale\_repo\_list) | Tailscale package repository list | `string` | `"https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list"` | no |
 | <a name="input_tailscale_tags"></a> [tailscale\_tags](#input\_tailscale\_tags) | List Tailscale tags | `list(string)` | `[]` | no |
@@ -71,5 +77,9 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_id"></a> [id](#output\_id) | Identifier for the instance with format projects/{{project}}/zones/{{zone}}/instances/{{name}} |
+| <a name="output_instance_id"></a> [instance\_id](#output\_instance\_id) | Server-assigned unique identifier of instance |
+| <a name="output_self_link"></a> [self\_link](#output\_self\_link) | URI of the instance |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
