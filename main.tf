@@ -11,6 +11,7 @@ resource "tailscale_tailnet_key" "self" {
 # TODO:
 #   create encryption key
 #   add for disk encryption
+#   create and use restricted service account
 #
 # [ Tailscale Server ]
 #
