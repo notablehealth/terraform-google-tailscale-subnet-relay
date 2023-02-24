@@ -13,8 +13,6 @@ Terraform module to manage a Tailscale subnet relay instance on GCP
 
 ## Usage
 
-Copy contents or create new repository on GitHub and use this as a template
-
 ```hcl
 module "tailscale-subnet-relay" {
   source  = "notable-health/tailscale-subnet-relay/google"

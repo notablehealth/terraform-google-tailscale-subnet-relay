@@ -8,6 +8,9 @@ resource "tailscale_tailnet_key" "self" {
   tags          = var.tailscale_tags
 }
 
+# TODO:
+#   create encryption key
+#   add for disk encryption
 #
 # [ Tailscale Server ]
 #
