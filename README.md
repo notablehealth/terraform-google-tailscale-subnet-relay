@@ -1,8 +1,8 @@
 # terraform-google-tailscale-subnet-relay
 
-[![Releases](https://img.shields.io/github/v/release/notable-health/terraform-google-tailscale-subnet-relay)](https://github.com/notable-health/terraform-google-tailscale-subnet-relay/releases)
+[![Releases](https://img.shields.io/github/v/release/notablehealth/terraform-google-tailscale-subnet-relay)](https://github.com/notablehealth/terraform-google-tailscale-subnet-relay/releases)
 
-[Terraform Module Registry](https://registry.terraform.io/modules/notable-health/tailscale-subnet-relay/google)
+[Terraform Module Registry](https://registry.terraform.io/modules/notablehealth/tailscale-subnet-relay/google)
 
 Terraform module to manage a Tailscale subnet relay instance on GCP
 
@@ -15,14 +15,14 @@ Terraform module to manage a Tailscale subnet relay instance on GCP
 
 ```hcl
 module "tailscale-subnet-relay" {
-  source  = "notable-health/tailscale-subnet-relay/google"
+  source  = "notablehealth/tailscale-subnet-relay/google"
   # Recommend pinning every module to a specific version
   # version = "x.x.x"
 
 }
 ```
 
-### Set Tailscale authorization via environment variables
+### Set Tailscale provider authorization via environment variables
 
 - TAILSCALE_API_KEY
 - TAILSCALE_TAILNET
