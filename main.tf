@@ -25,6 +25,7 @@ resource "google_compute_instance" "tailscale" {
   labels                    = var.instance_labels
   machine_type              = var.machine_type
   name                      = var.name
+  project                   = var.project
   tags                      = var.instance_tags
   zone                      = var.zone
   shielded_instance_config {

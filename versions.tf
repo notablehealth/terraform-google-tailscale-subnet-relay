@@ -1,10 +1,10 @@
 
 terraform {
-  required_version = ">= 1.3.7"
+  required_version = ">= 1.4.6"
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = ">= 4.53.1"
+      version = "~> 4.68"
     }
     #google-beta = {
     #  source  = "hashicorp/google-beta"
@@ -12,7 +12,7 @@ terraform {
     #}
     tailscale = {
       source  = "tailscale/tailscale"
-      version = "0.13.7"
+      version = "~> 0.13.7"
     }
   }
 }

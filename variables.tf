@@ -46,6 +46,10 @@ variable "name" {
   type        = string
   default     = "tailscale"
 }
+variable "project" {
+  description = "GCP project ID"
+  type        = string
+}
 
 variable "vpc_network_name" {
   description = "VPC network name where tailscale instance will be placed"
