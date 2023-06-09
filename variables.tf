@@ -16,10 +16,11 @@ variable "boot_image" {
   type        = string
   default     = "ubuntu-os-cloud/ubuntu-2204-lts"
 }
-#variable "gcloud_project" {
-#  description = "GCP project ID"
-#  type        = string
-#}
+variable "enable_display" {
+  description = "Enable display for debugging"
+  type        = bool
+  default     = false
+}
 variable "instance_description" {
   description = "DCP instance description"
   type        = string
@@ -96,7 +97,7 @@ variable "tailscale_repo_list" {
   default     = "https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list"
 }
 variable "tailscale_tags" {
-  description = "List Tailscale tags"
-  type        = list(string)
+  description = "List of Tailscale tags"
+  type        = set(string)
   default     = []
 }

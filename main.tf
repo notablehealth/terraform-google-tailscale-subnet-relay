@@ -19,9 +19,10 @@ resource "tailscale_tailnet_key" "self" {
 resource "google_compute_instance" "tailscale" {
   #checkov:skip=CKV_GCP_30:Ensure that instances are not configured to use the default service account
   #checkov:skip=CKV_GCP_38:Ensure boot disks for instances use Customer-Supplied Encryption Keys
-
+  depends_on                = [tailscale_tailnet_key.self]
   allow_stopping_for_update = true
   description               = var.instance_description
+  enable_display            = var.enable_display
   labels                    = var.instance_labels
   machine_type              = var.machine_type
   name                      = var.name
