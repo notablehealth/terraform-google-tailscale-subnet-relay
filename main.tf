@@ -45,9 +45,9 @@ resource "google_compute_instance" "tailscale" {
     }
   }
 
-  metadata = {
-    block-project-ssh-keys = true
-  }
+  #metadata = {
+  #  block-project-ssh-keys = true
+  #}
   metadata_startup_script = templatefile("${path.module}/templates/install.sh.ubuntu.tpl",
     {
       repository_key       = var.tailscale_repo_key
@@ -65,7 +65,7 @@ resource "google_compute_instance" "tailscale" {
   #service_account {}
 
   # Why??
-  provisioner "local-exec" {
-    command = "sleep 60"
-  }
+  #provisioner "local-exec" {
+  #  command = "sleep 60"
+  #}
 }

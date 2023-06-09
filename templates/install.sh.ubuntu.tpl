@@ -5,6 +5,8 @@
 #  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...
 #shellcheck disable=SC2154,SC2174,SC2086
 
+echo "Installing Tailscale"
+
 ### Ubuntu
 mkdir -p --mode=0755 /usr/share/keyrings
 curl -fsSL ${repository_key} | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
