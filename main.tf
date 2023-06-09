@@ -29,12 +29,12 @@ resource "google_compute_instance" "tailscale" {
   project                   = var.project
   tags                      = var.instance_tags
   zone                      = var.zone
-  #shielded_instance_config {
-  #  # Image must support
-  #  enable_integrity_monitoring = true
-  #  enable_secure_boot          = true
-  #  enable_vtpm                 = true
-  #}
+  shielded_instance_config {
+    # Image must support
+    enable_integrity_monitoring = false
+    enable_secure_boot          = false
+    enable_vtpm                 = false
+  }
 
   boot_disk {
     initialize_params {
