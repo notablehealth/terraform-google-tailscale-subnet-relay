@@ -12,8 +12,8 @@ mkdir -p --mode=0755 /usr/share/keyrings
 curl -fsSL ${repository_key} | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
 curl -fsSL ${repository_list} | sudo tee /etc/apt/sources.list.d/tailscale.list
 
-apt-get update
-apt-get install tailscale
+apt-get -y update
+apt-get -y install tailscale
 
 systemctl enable --now tailscaled
 
